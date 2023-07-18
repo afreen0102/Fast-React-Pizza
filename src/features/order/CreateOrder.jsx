@@ -45,47 +45,48 @@ function CreateOrder() {
   const formErrors = useActionData();
 
   return (
-    <div>
-      <h2>Ready to order? Lets go!</h2>
+    <div className="px-4 py-6">
+      <h2 className="text-xl font-semibold mb-8 ">Ready to order? Lets go!</h2>
 
       {/* <Form method="POST" action="/order/new"> */}
       <Form method="POST" >
 
-        <div>
-          <label>First Name</label>
+        <div className="mb-5 flex gap-2 flex-col sm:flex-row sm:items-center ">
+          <label className="sm:basis-40">First Name</label>
           <input 
           type="text" 
           name="customer" 
           required 
-          className="input"
+          className="input grow"
           />
         </div>
 
-        <div>
-          <label>Phone number</label>
-          <div>
+        <div className="mb-5 flex gap-2 flex-col sm:flex-row sm:items-center ">
+          <label className="sm:basis-40">Phone Number</label>
+          <div className="grow">
             <input 
             type="tel" 
             name="phone" 
             required
-            className="input" />
-          </div>
-          {
-            formErrors?.phone && <p>{formErrors.phone}</p>
+            className="input w-full" />
+            {
+            formErrors?.phone && <p className="text-xs mt-2 text-red-700 bg-red-100 p-2 rounded-md">{formErrors.phone}</p>
           }
+          </div>
+          
         </div>
-        <div>
-          <label>Address</label>
-          <div>
+        <div className="mb-5 flex gap-2 flex-col sm:flex-row sm:items-center ">
+          <label className="sm:basis-40">Address</label>
+          <div className="grow">
             <input 
             type="text" 
             name="address" 
             required
-            className="input"
+            className="input w-full"
             />
           </div>
         </div>
-        <div>
+        <div className="mb-12 flex gap-5 items-center ">
           <input
             type="checkbox"
             name="priority"
@@ -95,7 +96,7 @@ function CreateOrder() {
             // value={withPriority}
             // onChange={(e) => setWithPriority(e.target.checked)}
           />
-          <label htmlFor="priority">Want to give your order priority?</label>
+          <label htmlFor="priority" className="font-medium">Want to give your order priority?</label>
         </div>
         <div>
           <input 
@@ -106,7 +107,7 @@ function CreateOrder() {
           {/* <button 
           disabled={isSubmitting} 
           className="bg-yellow-400 uppercase font-semibold text-stone-800 py-3 px-4 inline-block tracking-wide rounded-full hover:bg-yellow-300 transition-colors duration-300 focus:outline-none focus:ring focus:ring-yellow-300 focus:bg-yellow-300 focus:ring-offset-2 disabled:cursor-not-allowed ">{ isSubmitting ? 'Pacing order....':  'Order now' }</button>  */}
-          <Button disabled={isSubmitting}>{ isSubmitting ? 'Pacing order....':  'Order now' }</Button>
+          <Button disabled={isSubmitting} type="primary">{ isSubmitting ? 'Pacing order....':  'Order now' }</Button>
         </div>
       </Form>
     </div>
